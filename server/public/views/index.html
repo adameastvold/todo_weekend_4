@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Task List</title>
+
+    <script type="text/javascript" src="./vendors/jquery.min.js"></script>
+    <script type="text/javascript" src="./vendors/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./scripts/clientapp.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./vendors/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+
+</head>
+
+<body>
+    <h1>To Do List</h1>
+    <h4>Have you completed your tasks yet?</h4>
+
+
+    <!-- FORM & INPUT -->
+
+    <div class="taskInputForm">
+        <h1>Task List</h1>
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="item_name">Add Task:</label>
+                <input type="text" id="item_name" name="item_name" class="form-control" />
+            </div>
+            <!-- <div class="form-group">
+                <label for="item_amount">Amount:</label>
+                <input type="text" id="item_amount" name="item_amount" class="form-control" />
+            </div> -->
+            <button type="submit" id="submitTask">Add Task</button>
+        </form>
+    </div>
+
+    <!-- TASK LIST CONTAINER -->
+
+    <div id="dataTable">
+
+    </div>
+</body>
+
+</html>

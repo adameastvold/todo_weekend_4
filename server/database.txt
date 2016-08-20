@@ -1,0 +1,5 @@
+CREATE TABLE todo_table (
+id SERIAL PRIMARY KEY,
+task varchar(255),
+status varchar(100)
+);
