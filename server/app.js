@@ -9,9 +9,9 @@ app.use(bodyParser.urlencoded({
 
 
 //      MODULES
-
-var testModule = require("./modules/testModule.js");
-console.log(testModule.test("app.js: testing module connection"));
+// 
+// var testModule = require("./modules/testModule.js");
+// console.log(testModule.test("app.js: testing module connection"));
 
 
 //      ROUTES

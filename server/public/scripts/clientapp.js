@@ -59,7 +59,7 @@ function postData() {
 
     var testdata = {};
 
-    $.each($('#dataForm').serializeArray(), function(i, field) {
+    $.each($('#taskForm').serializeArray(), function(i, field) {
         testdata[field.name] = field.value;
         testdata.status = 'Incomplete'
     });
@@ -69,7 +69,7 @@ function postData() {
         url: '/postData',
         data: testdata,
         success: function() {
-            console.log('/POST success function ran');
+            console.log('/POST success function ran with this object:', testdata);
             $('#dataTable').empty();
             getData();
 
@@ -92,31 +92,33 @@ function getData() {
         url: '/getData',
         success: function(data) {
             console.log('/GET success function ran');
-            buildTableHeader(['ID', 'Task', 'Status']);
+            buildTableHeader(['Task', 'Status']);
 
             data.forEach(function(rowData, i) {
                 var $el = $('<div id="' + rowData.id + '"></div>');
-
+                console.log(rowData);
                 //create empty array
                 //loop through data and push to empty array
                 //loop through now full and organized array >> append to dom
-                var dataTable = ['id', 'task', 'status'];
+                var dataTable = ['task', 'status'];
+                console.log('this is the dataTable:', dataTable);
                 dataTable.forEach(function(property) {
 
                     // take each property and store it in an array
                     // then itterate through the array
                     // then have if statement that is like "status = Incomplete"
                     // take that specific part of the array, pop it out, and then shift it into the beginning of the array
-
-
                     var readonly = ''
                     if (property != 'task') {
                         readonly = 'readonly';
                     }
+                    // if (property.status == 'Complete') {
+                    //     $('.incompleteTaskBox').toggleClass('.completedTaskBox');
+                    // }
 
-                    var $input = $('<input type="text" id="' + property + '"name="' + property + '" ' + readonly + '/>');
+                    var $input = $('<input class="incompleteTaskBox" type="text" id="' + property + '"name="' + property + '" ' + readonly + '/>');
                     $input.val(rowData[property]);
-
+                    console.log('this is rowData[property]', rowData[property]);
                     $el.append($input);
 
                 });
@@ -124,6 +126,7 @@ function getData() {
                 $el.append('<button id=' + rowData.id + ' class="update">Update</button>');
                 $el.append('<button id=' + rowData.id + ' class="delete">Delete</button>');
                 $el.append('<button id=' + rowData.id + ' class="complete">Complete</button>');
+
 
                 $('#dataTable').append($el);
             });
@@ -137,11 +140,14 @@ function getData() {
 }
 
 function completedTask() {
+
+
     var testdata = {};
     var inputs = $(this).parent().children().serializeArray();
     $.each(inputs, function(i, field) {
         testdata[field.name] = field.value;
         testdata.status = 'Complete';
+
         console.log('this is the testdata:', testdata);
     });
 
@@ -171,9 +177,18 @@ function buildTableHeader(headerList) {
     var $header = $('<div id="dataTableHead"></div>');
     headerList.forEach(function(property) {
 
+        //going to need to include an if statement that won't append ID
+
+
         var $input = $('<input type="text" id="' + property + '"name="' + property + '" />');
+
+
+
         $input.val(property);
+
         $header.append($input);
+
         $('#dataTable').append($header);
+
     });
 }
