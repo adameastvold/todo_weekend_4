@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             res.sendStatus(500);
-            console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in POST, pg.connect", err, "\n \n \n \n");
+            console.log("error in POST, pg.connect", err, "\n \n \n \n");
         }
 
         //To manage strings and references cleaner
@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
                 done();
                 if (err) {
                     res.sendStatus(500);
-                    console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in POST, client.query: ", err, "\n \n \n \n");
+                    console.log("error in POST, client.query: ", err, "\n \n \n \n");
                     return;
                 }
                 res.send(result.rows);

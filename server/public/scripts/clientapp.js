@@ -1,13 +1,14 @@
 $(document).ready(function() {
     getData();
 
-    //button listeners
+    //  LISTENERS
     $('#submitTask').on("click", postData);
     $('#dataTable').on("click", ".delete", deleteTask);
     $('#dataTable').on("click", ".update", updateTask);
     $('#dataTable').on('click', '.complete', completedTask);
 });
 
+//  DELETE FUNCTIONALITY
 function deleteTask() {
     var testdataID = $(this).attr("id");
 
@@ -26,6 +27,7 @@ function deleteTask() {
     });
 }
 
+//  UPDATE TASK FUNCTIONALITY
 function updateTask() {
     var testdata = {};
     var inputs = $(this).parent().children().serializeArray();
@@ -35,7 +37,6 @@ function updateTask() {
     });
     console.log("updateData searches through:", testdata);
 
-    //finds updateButton's appened id refrencing rowValue.id
     var testdataID = $(this).parent().attr('id');
 
     $.ajax({
@@ -53,6 +54,8 @@ function updateTask() {
 
 }
 
+
+//  SEND DATA TO SERVER
 function postData() {
     event.preventDefault();
 
@@ -80,12 +83,10 @@ function postData() {
 
     });
 
-
-    //come back to this
-    // $('#item_name').text('');
-
 }
 
+
+// THIS APPENDS TO THE DOM & CONTROLS THE 'READONLY' OF THE INPUTS
 function getData() {
     $.ajax({
         type: 'GET',
@@ -108,10 +109,12 @@ function getData() {
                     // then itterate through the array
                     // then have if statement that is like "status = Incomplete"
                     // take that specific part of the array, pop it out, and then shift it into the beginning of the array
+
                     var readonly = ''
                     if (property != 'task') {
                         readonly = 'readonly';
                     }
+
                     // if (property.status == 'Complete') {
                     //     $('.incompleteTaskBox').toggleClass('.completedTaskBox');
                     // }
@@ -139,6 +142,7 @@ function getData() {
 
 }
 
+// THIS CONTROLS THE INCOMPLETE TO COMPLETE FUNCTION
 function completedTask() {
 
 
@@ -153,7 +157,6 @@ function completedTask() {
 
     console.log("complete button searches through:", testdata);
 
-    //finds updateButton's appened id refrencing rowValue.id
     var testdataID = $(this).parent().attr('id');
 
     $.ajax({
@@ -171,7 +174,7 @@ function completedTask() {
 
 }
 
-
+// THIS CREATES THE HEADER TO THE TABLE OF TASKS. Looking back, I should have named my table the table of tasks, because that's awesome.
 function buildTableHeader(headerList) {
 
     var $header = $('<div id="dataTableHead"></div>');

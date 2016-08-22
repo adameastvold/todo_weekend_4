@@ -8,12 +8,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-//      MODULES
-// 
-// var testModule = require("./modules/testModule.js");
-// console.log(testModule.test("app.js: testing module connection"));
-
-
 //      ROUTES
 
 var getData = require("./routes/getData.js");

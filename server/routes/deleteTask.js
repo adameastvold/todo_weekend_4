@@ -8,7 +8,7 @@ router.delete('/:id', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             res.sendStatus(500);
-            console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in DELETE, pg.connect\n", err, "\n \n \n \n");
+            console.log("error in DELETE, pg.connect\n", err, "\n \n \n \n");
         }
 
         //To manage strings and references cleaner
@@ -19,7 +19,7 @@ router.delete('/:id', function(req, res) {
             function(err, result) {
                 done();
                 if (err) {
-                    console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in DELETE, client.query: ", err, "\n \n \n \n");
+                    console.log("error in DELETE, client.query: ", err, "\n \n \n \n");
                     res.sendStatus(500);
                     return;
                 }

@@ -8,10 +8,10 @@ router.get('/', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             res.sendStatus(500);
-            console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in GET, pg.connect", err, "\n \n \n \n");
+            console.log("error in GET, pg.connect", err, "\n \n \n \n");
         }
 
-        //To manage strings and references cleaner
+        // Shout out to Drew for having a great idea of storing the query strings for later use!
         var queryStringGET = 'SELECT * FROM todo_table';
 
         client.query(queryStringGET,
@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
                 done(); //closes connection, I only can have ten :(
                 if (err) {
                     res.sendStatus(500);
-                    console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in GET, client.query: ", err, "\n \n \n \n");
+                    console.log("error in GET, client.query: ", err, "\n \n \n \n");
                     return;
                 }
                 res.send(result.rows);
