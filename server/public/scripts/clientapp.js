@@ -174,18 +174,13 @@ function completedTask() {
 
 }
 
-// THIS CREATES THE HEADER TO THE TABLE OF TASKS. Looking back, I should have named my table the table of tasks, because that's awesome.
+// THIS CREATES THE HEADER TO THE TABLE OF TASKS.
 function buildTableHeader(headerList) {
 
     var $header = $('<div id="dataTableHead"></div>');
     headerList.forEach(function(property) {
 
-        //going to need to include an if statement that won't append ID
-
-
-        var $input = $('<input type="text" id="' + property + '"name="' + property + '" />');
-
-
+        var $input = $('<input class="headerBox" type="text" id="' + property + '"name="' + property + '" />');
 
         $input.val(property);
 

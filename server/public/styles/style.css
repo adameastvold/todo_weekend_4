@@ -14,9 +14,13 @@
 }
 
 #dataTableHead{
-  margin-right: 195px;
+  margin-right: 196px;
   font-style: italic;
   font-weight: bold;
+}
+
+.headerBox{
+  width: 200px;
 }
 
 .checkbox {
@@ -26,4 +30,8 @@
   display: inline-block;
   margin-top: 1px;
 
+}
+
+.incompleteTaskBox {
+  width: 200px;
 }
